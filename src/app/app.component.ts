@@ -10,7 +10,7 @@ import { TextStreamService } from './text-stream.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'llamaai-chat';
+  title = 'ai-chat';
   query = '';
   output = '';
 
@@ -20,7 +20,6 @@ export class AppComponent {
   ) {}
 
   public search() {
-    console.log(this.query);
     const llamaChat: LlamaChat = new LlamaChat(this.query);
     this.llamaService.postData(llamaChat).subscribe(async (res) => {
       const output = await marked.parse(res.response);
