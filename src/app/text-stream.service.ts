@@ -11,6 +11,6 @@ export class TextStreamService {
 
   streamText(text: string): Observable<string> { 
     const characters = text.split(''); 
-    return of(...characters).pipe(concatMap(char => of(char).pipe(delay(5))));
+    return of(...characters).pipe(concatMap(char => of(char).pipe(delay(3))));
   }
 }

@@ -1,20 +1,35 @@
 <mat-toolbar color="primary">
   AI Chat
 </mat-toolbar>
-<div class="chat-container" fxLayout="column">
-  <mat-card class="chat-history" fxFlex>
-    <mat-card-content [innerHTML]="output">
-    </mat-card-content>
-  </mat-card>
-  
-  <mat-card class="message-input">
-    <mat-card-content>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Type your message" [(ngModel)]="query">
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="search()">Send</button>
-    </mat-card-content>
-  </mat-card>
-  
+<div class="chat-container" fxLayout="column" style="height: 100vh;">
+  <div class="center-content">
+    <mat-card class="chat-history" *ngIf="output" #chatHistory>
+      <mat-card-content [innerHTML]="output"></mat-card-content>
+    </mat-card>
+    <mat-card class="message-input">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <div class="textarea-container">
+            <textarea
+              matInput
+              placeholder="Type your message"
+              [(ngModel)]="query"
+              (keyup.enter)="search()"
+              rows="3"
+              style="resize: vertical;"
+            ></textarea>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="search()"
+              [class.active]="isSending"
+              class="send-btn-inside"
+            >
+              Send
+            </button>
+          </div>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
-

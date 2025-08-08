@@ -46,14 +46,32 @@
     flex-direction: column;
   }
 
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+  }
+
+  .chat-history,
+  .message-input {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 12px;
+  }
+
   .chat-history {
-    flex: 1;
+    flex: 1 1 auto;
     overflow-y: auto;
-    margin: 10px;
+    max-height: 70vh;
   }
 
   .message-input {
-    padding: 10px;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
   }
 
   .example-full-width {
@@ -63,8 +81,36 @@
   body, mat-card {
     font-family: 'Lato', sans-serif;
   }
-  
-  
-  
-  
-  
+
+  button.active {
+    box-shadow: 0 0 0 2px #1976d2 inset;
+    transform: scale(0.97);
+    transition: box-shadow 0.1s, transform 0.1s;
+  }
+
+  mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .textarea-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .textarea-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 60px; /* space for button */
+  }
+
+  .send-btn-inside {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 2;
+    min-width: 48px;
+    height: 36px;
+    padding: 0 12px;
+  }
